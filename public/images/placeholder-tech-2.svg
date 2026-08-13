@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="960" viewBox="0 0 540 960">
+  <defs>
+    <linearGradient id="techGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#050f14"/>
+      <stop offset="100%" style="stop-color:#0A2938"/>
+    </linearGradient>
+    <radialGradient id="techAccent2" cx="20%" cy="80%" r="60%">
+      <stop offset="0%" style="stop-color:#1A8C8C;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#1A8C8C;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="540" height="960" fill="url(#techGrad2)"/>
+  <rect width="540" height="960" fill="url(#techAccent2)"/>
+  <text x="270" y="480" text-anchor="middle" fill="#CBDADC" font-family="system-ui" font-size="16" opacity="0.4">TECH CONTENT</text>
+</svg>

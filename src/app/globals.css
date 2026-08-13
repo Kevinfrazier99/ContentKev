@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* colour */
+  --marine: #14507E;
+  --shallows: #1A8C8C;
+  --deep: #0A2938;
+  --persimmon: #E4633C;
+  --mist: #CBDADC;
+  --salt: #F2F5F5;
+
+  /* derived */
+  --rule: rgba(20, 80, 126, 0.22);
+  --rule-dark: rgba(203, 218, 220, 0.25);
+
+  /* type */
+  --font: "Roboto Condensed", system-ui, sans-serif;
+
+  /* layout */
+  --measure: 64ch;
+  --pad: clamp(20px, 5vw, 80px);
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-marine: var(--marine);
+  --color-shallows: var(--shallows);
+  --color-deep: var(--deep);
+  --color-persimmon: var(--persimmon);
+  --color-mist: var(--mist);
+  --color-salt: var(--salt);
+  --color-rule: var(--rule);
+  --color-rule-dark: var(--rule-dark);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--salt);
+  color: var(--deep);
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography system */
+.display {
+  font-weight: 200;
+  text-transform: uppercase;
+  letter-spacing: 0.012em;
+  line-height: 0.9;
+}
+
+.display-alt {
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.9;
+}
+
+.subhead {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+}
+
+.label {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 14px;
+}
+
+.body-text {
+  font-weight: 400;
+  max-width: var(--measure);
+  line-height: 1.6;
+}
+
+.pull-quote {
+  font-weight: 200;
+  font-style: italic;
+  line-height: 1.25;
+  max-width: 23ch;
+}
+
+.data {
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Logo slot placeholder */
+.logo-slot {
+  border: 1px dashed var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(10, 41, 56, 0.45);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.logo-slot-dark {
+  border-color: var(--rule-dark);
+  color: rgba(203, 218, 220, 0.45);
+}
+
+/* Button styles */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  border: 1px solid var(--shallows);
+  background: transparent;
+  color: var(--salt);
+  font-family: var(--font);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border-radius: var(--radius);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  background: var(--shallows);
+  border-color: var(--shallows);
+}
+
+/* Waterline component */
+.waterline {
+  position: relative;
+  height: 14px;
+  width: 100%;
+}
+
+.waterline .line-1 {
+  position: absolute;
+  left: 0;
+  right: 14%;
+  top: 0;
+  height: 1px;
+  background: var(--marine);
+}
+
+.waterline .line-2 {
+  position: absolute;
+  left: 9%;
+  right: 0;
+  top: 8px;
+  height: 1px;
+  background: var(--shallows);
+  opacity: 0.75;
+}
+
+.waterline-dark .line-1 {
+  background: var(--mist);
+  opacity: 0.5;
+}
+
+.waterline-dark .line-2 {
+  background: var(--shallows);
+}
+
+/* Filter tabs */
+.filter-tab {
+  position: relative;
+  padding: 0.5rem 0;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: var(--marine);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font);
+}
+
+.filter-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--shallows);
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.filter-tab.active::after,
+.filter-tab:hover::after {
+  transform: scaleX(1);
+}
+
+.filter-tab.active {
+  color: var(--shallows);
+}
+
+/* Gradient scrim for text over images */
+.scrim {
+  background: linear-gradient(to top, rgba(10, 41, 56, 0.8) 0%, transparent 100%);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}

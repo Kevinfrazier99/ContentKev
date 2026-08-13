@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="960" viewBox="0 0 540 960">
+  <defs>
+    <linearGradient id="marineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#14507E"/>
+      <stop offset="100%" style="stop-color:#0A2938"/>
+    </linearGradient>
+    <radialGradient id="marineAccent" cx="20%" cy="20%" r="40%">
+      <stop offset="0%" style="stop-color:#E4633C;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#E4633C;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  <rect width="540" height="960" fill="url(#marineGrad)"/>
+  <rect width="540" height="960" fill="url(#marineAccent)"/>
+  <text x="270" y="480" text-anchor="middle" fill="#CBDADC" font-family="system-ui" font-size="16" opacity="0.4">ANIMALS CONTENT</text>
+</svg>
