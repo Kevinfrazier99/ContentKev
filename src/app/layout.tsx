@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Kevin Frazier | UGC Creator — Tech, Ocean, Animals",
+  title: "Kevin Frazier | UGC Creator",
   description: "San Diego-based UGC creator specializing in tech/gadgets, health/ocean sports, and pet content. Tested gear, honest takes.",
 };
 
