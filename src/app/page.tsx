@@ -20,6 +20,9 @@ const portfolioCards: VideoCard[] = [
   },
 ];
 
+// Set to true to show filter tabs when you have more videos
+const SHOW_FILTERS = false;
+
 type FilterType = 'all' | 'tech' | 'wellness' | 'animals';
 
 export default function Home() {
@@ -140,7 +143,7 @@ export default function Home() {
 
         {/* Portfolio Grid */}
         <section id="portfolio" className="py-12 md:py-20">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+          <div className={`flex flex-col ${SHOW_FILTERS ? 'md:flex-row md:items-center md:justify-between' : ''} gap-6 mb-10`}>
             <div>
               <p 
                 className="label mb-2"
@@ -156,18 +159,20 @@ export default function Home() {
               </h2>
             </div>
 
-            {/* Filter tabs */}
-            <div className="flex gap-6 flex-wrap">
-              {filters.map((filter) => (
-                <button
-                  key={filter.value}
-                  onClick={() => setActiveFilter(filter.value)}
-                  className={`filter-tab ${activeFilter === filter.value ? 'active' : ''}`}
-                >
-                  {filter.label}
-                </button>
-              ))}
-            </div>
+            {/* Filter tabs - Hidden when SHOW_FILTERS is false */}
+            {SHOW_FILTERS && (
+              <div className="flex gap-6 flex-wrap">
+                {filters.map((filter) => (
+                  <button
+                    key={filter.value}
+                    onClick={() => setActiveFilter(filter.value)}
+                    className={`filter-tab ${activeFilter === filter.value ? 'active' : ''}`}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <FocusCards cards={filteredCards} />
