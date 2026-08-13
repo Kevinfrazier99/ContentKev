@@ -166,15 +166,15 @@ const Card = React.memo(
               src={card.src}
               muted
               playsInline
-              preload="metadata"
+              autoPlay
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover"
               style={{ backgroundColor: 'var(--deep)' }}
-              onLoadedData={(e) => {
-                // Seek to first frame on mobile
+              onCanPlay={(e) => {
+                // Pause immediately to show first frame as thumbnail
                 const video = e.currentTarget;
-                if (video.currentTime === 0) {
-                  video.currentTime = 0.1;
-                }
+                video.pause();
+                video.currentTime = 0.1;
               }}
             />
           ) : (

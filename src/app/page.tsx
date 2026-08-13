@@ -15,7 +15,7 @@ const portfolioCards: VideoCard[] = [
   },
   {
     title: 'Smalls Talking Head Funny Voice',
-    src: '/videos/Cat POV Talking head + funny voiceover1.mp4',
+    src: '/videos/Cat%20POV%20Talking%20head%20%2B%20funny%20voiceover1.mp4',
     category: 'animals',
   },
 ];

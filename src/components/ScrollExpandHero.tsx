@@ -186,10 +186,22 @@ export function ScrollExpandHero({
     };
   }, [mediaSrc, mediaType]);
 
-  // Scrub the video: first frame at the top of the page, last frame once expanded.
+  const isMobileState = viewport.w < 768;
+
+  // On mobile, autoplay the video. On desktop, scrub with scroll.
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !videoDuration) return;
+    if (!video) return;
+
+    if (isMobileState) {
+      // Mobile: just autoplay and loop
+      video.loop = true;
+      video.play().catch(() => {});
+      return;
+    }
+
+    // Desktop: scrub the video based on scroll progress
+    if (!videoDuration) return;
 
     if (seekFrame.current !== null) {
       cancelAnimationFrame(seekFrame.current);
@@ -208,9 +220,7 @@ export function ScrollExpandHero({
         cancelAnimationFrame(seekFrame.current);
       }
     };
-  }, [scrollProgress, videoDuration]);
-
-  const isMobileState = viewport.w < 768;
+  }, [scrollProgress, videoDuration, isMobileState]);
 
   // The frame is flush with the top of the page and runs the full viewport height,
   // unless a narrow viewport would make a 9:16 frame overflow horizontally.
@@ -298,12 +308,13 @@ export function ScrollExpandHero({
                         poster={posterSrc}
                         muted
                         playsInline
+                        autoPlay={isMobileState}
+                        loop={isMobileState}
                         preload="auto"
                         className="w-full h-full object-cover"
                         controls={false}
                         disablePictureInPicture
                         style={{ backgroundColor: 'var(--deep)' }}
-                        webkit-playsinline="true"
                       />
                       <motion.div
                         className="absolute inset-0"
