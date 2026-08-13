@@ -302,6 +302,8 @@ export function ScrollExpandHero({
                         className="w-full h-full object-cover"
                         controls={false}
                         disablePictureInPicture
+                        style={{ backgroundColor: 'var(--deep)' }}
+                        webkit-playsinline="true"
                       />
                       <motion.div
                         className="absolute inset-0"

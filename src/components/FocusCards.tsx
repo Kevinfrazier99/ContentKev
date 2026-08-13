@@ -163,11 +163,19 @@ const Card = React.memo(
           {/* Thumbnail - image or video */}
           {isThumbnailVideo ? (
             <video
-              src={`${card.src}#t=0`}
+              src={card.src}
               muted
               playsInline
               preload="metadata"
               className="absolute inset-0 w-full h-full object-cover"
+              style={{ backgroundColor: 'var(--deep)' }}
+              onLoadedData={(e) => {
+                // Seek to first frame on mobile
+                const video = e.currentTarget;
+                if (video.currentTime === 0) {
+                  video.currentTime = 0.1;
+                }
+              }}
             />
           ) : (
             <Image
