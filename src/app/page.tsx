@@ -18,6 +18,11 @@ const portfolioCards: VideoCard[] = [
     src: '/videos/Cat%20POV%20Talking%20head%20%2B%20funny%20voiceover1.mp4',
     category: 'animals',
   },
+  {
+    title: 'Cookiy Claude Skill Talking Head',
+    src: '/videos/Cookies Video Small.mp4',
+    category: 'tech',
+  },
 ];
 
 // Set to true to show filter tabs when you have more videos
