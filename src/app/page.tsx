@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { ScrollExpandHero } from '@/components/ScrollExpandHero';
 import { FocusCards, VideoCard } from '@/components/FocusCards';
 import { NicheCard } from '@/components/NicheCard';
@@ -32,6 +32,7 @@ type FilterType = 'all' | 'tech' | 'wellness' | 'animals';
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
+  const introHasPlayed = useRef(false);
 
   const filteredCards = activeFilter === 'all' 
     ? portfolioCards 
@@ -62,15 +63,25 @@ export default function Home() {
             {/* Intro Video */}
             <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 w-full overflow-hidden" style={{ background: 'var(--deep)' }}>
               <video
-                src="/videos/Kevin F UGC Intro.mp4#t=13"
+                src="/videos/Kevin F UGC Intro.mp4"
                 className="w-full h-full object-cover"
                 controls
                 playsInline
                 preload="metadata"
+                onLoadedMetadata={(e) => {
+                  // Park on a mid-clip frame so the still isn't a black opening frame.
+                  if (!introHasPlayed.current) e.currentTarget.currentTime = 13;
+                }}
+                onPlay={(e) => {
+                  if (!introHasPlayed.current) {
+                    introHasPlayed.current = true;
+                    e.currentTarget.currentTime = 0;
+                  }
+                }}
               />
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none bg-gradient-to-t from-black/60 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none bg-gradient-to-t from-black/60 to-transparent">
                 <span 
-                  className="label absolute bottom-4 left-4"
+                  className="label absolute bottom-14 left-4"
                   style={{ color: 'var(--salt)' }}
                 >
                   Intro Video
